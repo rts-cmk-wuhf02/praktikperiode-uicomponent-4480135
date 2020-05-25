@@ -1,10 +1,9 @@
 /** @jsx jsx */
-import React from "react";
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
 import { css, jsx } from "@emotion/core";
-import RoundedContainer from "./components/RoundedContainer";
 
 const styles = css`
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap");
     padding: 43px 55px;
     background-color: #eaeaea;
     min-height: 100vh;
