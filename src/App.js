@@ -35,8 +35,9 @@ function App() {
                     <GeneralCard
                         title="Surfing in Maldives"
                         text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
-                        color="#33439B"
+                        categoryColor="#33439B"
                         category="Travel"
+                        image="https://via.placeholder.com/600"
                     />
                     <SidewaysCard
                         title="Outdoor Experience"

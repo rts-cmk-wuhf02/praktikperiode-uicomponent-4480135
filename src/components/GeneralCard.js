@@ -54,10 +54,10 @@ function GeneralCard(props) {
         <article css={styles}>
             <RoundedContainer>
                 <figure>
-                    <img src="https://via.placeholder.com/600" alt="" />
+                    <img src={props.image} alt="" />
                 </figure>
                 <section>
-                    <StylizedTitle color={props.color}>
+                    <StylizedTitle color={props.categoryColor}>
                         {props.category}
                     </StylizedTitle>
                     <h3>{props.title}</h3>
