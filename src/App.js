@@ -4,6 +4,7 @@ import { css, jsx } from "@emotion/core";
 import GeneralCard from "./components/GeneralCard";
 import SidewaysCard from "./components/SidewaysCard";
 import SimpleCard from "./components/SimpleCard";
+import CollectionCard from "./components/CollectionCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
@@ -26,9 +27,23 @@ const styles = css`
 
     .lineB {
         display: flex;
+        margin-bottom: 26px;
 
         .simpleCard {
             margin-right: 28px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+        }
+    }
+
+    .lineC {
+        display: flex;
+        margin-bottom: 23px;
+
+        .collectionCard {
+            margin-right: 27px;
 
             &:last-child {
                 margin-right: 0;
@@ -67,6 +82,7 @@ function App() {
                         ]}
                     />
                 </div>
+
                 <div className="lineB">
                     <SimpleCard
                         title="On-time Delivery"
@@ -91,6 +107,30 @@ function App() {
                         text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
                         image="https://via.placeholder.com/100x70"
                         color="#597AEF"
+                    />
+                </div>
+
+                <div className="lineC">
+                    <CollectionCard
+                        image="https://via.placeholder.com/300"
+                        title="Off-the-grid experiences"
+                        authorIcon="https://via.placeholder.com/150"
+                        author="Melanie S."
+                        collection="10"
+                    />
+                    <CollectionCard
+                        image="https://via.placeholder.com/300"
+                        title="Shapes, triangles &amp; fashion"
+                        authorIcon="https://via.placeholder.com/150"
+                        author="Saraha F."
+                        collection="1"
+                    />
+                    <CollectionCard
+                        image="https://via.placeholder.com/300"
+                        title="In-depth architecture"
+                        authorIcon="https://via.placeholder.com/150"
+                        author="Benhour."
+                        collection="100"
                     />
                 </div>
             </div>
