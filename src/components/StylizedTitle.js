@@ -11,7 +11,11 @@ const styles = css`
 
 function StylizedTitle(props) {
     return (
-        <div css={styles} style={{ color: props.color }}>
+        <div
+            css={styles}
+            style={{ color: props.color }}
+            className={props.className}
+        >
             {props.children}
         </div>
     );

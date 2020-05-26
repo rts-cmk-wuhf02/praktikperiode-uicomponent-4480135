@@ -62,11 +62,11 @@ const styles = css`
             width: 100%;
             margin: 0 9px;
 
-            &:first-child {
+            &:first-of-type {
                 margin-left: 0;
             }
 
-            &:last-child {
+            &:last-of-type {
                 margin-right: 0;
             }
         }
@@ -106,9 +106,9 @@ function SidewaysCard(props) {
                     <h2>{props.title}</h2>
                     <p>{props.text}</p>
                     <section className="thumbnailContainer">
-                        {props.thumbnails.map((image) => {
+                        {props.thumbnails.map((image, i) => {
                             return (
-                                <RoundedContainer>
+                                <RoundedContainer key={i}>
                                     <figure>
                                         <img src={image} alt="" />
                                     </figure>
