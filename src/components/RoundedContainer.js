@@ -1,5 +1,4 @@
 /** @jsx jsx */
-import React from "react";
 import { css, jsx } from "@emotion/core";
 
 const styles = css`
@@ -8,7 +7,11 @@ const styles = css`
 `;
 
 function RoundedContainer(props) {
-    return <div css={styles}>{props.children}</div>;
+    return (
+        <div className="roundedContainer" css={styles}>
+            {props.children}
+        </div>
+    );
 }
 
 export default RoundedContainer;
