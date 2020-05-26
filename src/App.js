@@ -2,6 +2,7 @@
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
 import { css, jsx } from "@emotion/core";
 import GeneralCard from "./components/GeneralCard";
+import SidewaysCard from "./components/SidewaysCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
@@ -21,6 +22,12 @@ function App() {
         <ContentfulProvider client={contentfulClient}>
             <div css={styles}>
                 <GeneralCard
+                    title="Surfing in Maldives"
+                    text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
+                    color="#33439B"
+                    category="Travel"
+                />
+                <SidewaysCard
                     title="Surfing in Maldives"
                     text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
                     color="#33439B"
