@@ -3,6 +3,7 @@ import { ContentfulClient, ContentfulProvider } from "react-contentful";
 import { css, jsx } from "@emotion/core";
 import GeneralCard from "./components/GeneralCard";
 import SidewaysCard from "./components/SidewaysCard";
+import SimpleCard from "./components/SimpleCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
@@ -11,13 +12,27 @@ const styles = css`
     min-height: 100vh;
     box-sizing: border-box;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 
     .lineA {
         display: flex;
+        margin-bottom: 29px;
 
         & > :first-child {
             margin-right: 27px;
+        }
+    }
+
+    .lineB {
+        display: flex;
+
+        .simpleCard {
+            margin-right: 28px;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
     }
 `;
@@ -50,6 +65,32 @@ function App() {
                             "https://via.placeholder.com/800",
                             "https://via.placeholder.com/900",
                         ]}
+                    />
+                </div>
+                <div className="lineB">
+                    <SimpleCard
+                        title="On-time Delivery"
+                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
+                        image="https://via.placeholder.com/150"
+                        color="#005AEE"
+                    />
+                    <SimpleCard
+                        title="Parcels"
+                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
+                        image="https://via.placeholder.com/70"
+                        color="#FFA767"
+                    />
+                    <SimpleCard
+                        title="Quality Assurance"
+                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
+                        image="https://via.placeholder.com/120"
+                        color="#0AACDC"
+                    />
+                    <SimpleCard
+                        title="Customer Service"
+                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
+                        image="https://via.placeholder.com/100x70"
+                        color="#597AEF"
                     />
                 </div>
             </div>

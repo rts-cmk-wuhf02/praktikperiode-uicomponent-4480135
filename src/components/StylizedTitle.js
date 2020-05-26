@@ -2,7 +2,6 @@
 import { css, jsx } from "@emotion/core";
 
 const styles = css`
-    font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 11px;
     letter-spacing: 2px;
