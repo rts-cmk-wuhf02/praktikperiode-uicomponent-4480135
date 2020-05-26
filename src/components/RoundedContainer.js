@@ -8,7 +8,14 @@ const styles = css`
 
 function RoundedContainer(props) {
     return (
-        <div className="roundedContainer" css={styles}>
+        <div
+            className={
+                "roundedContainer" +
+                (props.className ? " " + props.className : "")
+            }
+            css={styles}
+            style={props.style}
+        >
             {props.children}
         </div>
     );

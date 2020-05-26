@@ -10,6 +10,16 @@ const styles = css`
     background-color: #eaeaea;
     min-height: 100vh;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+
+    .lineA {
+        display: flex;
+
+        & > :first-child {
+            margin-right: 27px;
+        }
+    }
 `;
 
 const contentfulClient = new ContentfulClient({
@@ -21,18 +31,26 @@ function App() {
     return (
         <ContentfulProvider client={contentfulClient}>
             <div css={styles}>
-                <GeneralCard
-                    title="Surfing in Maldives"
-                    text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
-                    color="#33439B"
-                    category="Travel"
-                />
-                <SidewaysCard
-                    title="Surfing in Maldives"
-                    text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
-                    color="#33439B"
-                    category="Travel"
-                />
+                <div className="lineA">
+                    <GeneralCard
+                        title="Surfing in Maldives"
+                        text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
+                        color="#33439B"
+                        category="Travel"
+                    />
+                    <SidewaysCard
+                        title="Outdoor Experience"
+                        text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
+                        categoryColor="#005AEE"
+                        category="Leisure"
+                        image="https://via.placeholder.com/600"
+                        thumbnails={[
+                            "https://via.placeholder.com/700",
+                            "https://via.placeholder.com/800",
+                            "https://via.placeholder.com/900",
+                        ]}
+                    />
+                </div>
             </div>
         </ContentfulProvider>
     );
