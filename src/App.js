@@ -10,6 +10,7 @@ import ShortDoubleCard from "./components/ShortDoubleCard";
 import ShortCard from "./components/ShortCard";
 import LatestNews from "./components/LatestNews";
 import InfoCard from "./components/InfoCard";
+import NewsDigest from "./components/NewsDigest";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
@@ -249,7 +250,9 @@ function App() {
                         />
                     </div>
 
-                    <div></div>
+                    <div>
+                        <NewsDigest />
+                    </div>
 
                     <div>
                         <InfoCard text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas laoreet ligula, ac elementum risus. Aliquam volutpat ex eget elit venenatis, vel luctus arcu pulvinar. " />

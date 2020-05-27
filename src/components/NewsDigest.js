@@ -1,12 +1,11 @@
 /** @jsx jsx */
 import RoundedContainer from "./RoundedContainer";
-import SinglePost from "./SinglePost";
 import { Query } from "react-contentful";
 import { css, jsx } from "@emotion/core";
 
 const styles = css`
     width: 372px;
-    height: 877px;
+    height: 971px;
 
     .mainContainer {
         background-color: white;
@@ -24,8 +23,15 @@ const styles = css`
         margin: 0;
     }
 
+    h3 {
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 24px;
+        margin: 11px;
+    }
+
     .postsContainer {
-        padding: 26px;
+        padding: 32px 42px 62px 42px;
         box-sizing: border-box;
         height: 100%;
 
@@ -44,7 +50,7 @@ const styles = css`
     }
 
     .header {
-        background-color: #3f51b5;
+        background-color: #3ca773;
         width: 100%;
         padding: 15px 0;
         color: white;
@@ -53,31 +59,47 @@ const styles = css`
         flex-shrink: 0;
     }
 
-    .footer {
-        border-top: 1px solid rgba(149, 152, 154, 0.19);
-        width: 100%;
-        padding: 21px 0;
-        color: #7b8591;
+    .newsPost {
         text-align: center;
-        text-transform: uppercase;
-        font-size: 14px;
-        line-height: 19px;
-        letter-spacing: 1px;
-        font-weight: bold;
-        flex-shrink: 0;
+        border-bottom: 1px solid rgba(123, 133, 145, 0.24);
+        padding: 0 10px;
+
+        &:last-of-type {
+            border-bottom: 0;
+        }
 
         p {
-            margin: 0;
+            color: #7b8591;
+            margin-top: 11px;
+            margin-bottom: 30px;
+            height: 62px;
+            overflow: hidden;
+        }
+
+        .postId {
+            display: inline-block;
+            width: 39px;
+            height: 39px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-family: "Montserrat", sans-serif;
+            font-size: 20px;
+            line-height: 27px;
+            font-weight: bold;
+            margin: 30px auto 0 auto;
         }
     }
 `;
 
-function LatestNews(props) {
+function NewsDigest(props) {
     return (
-        <article css={styles} className="latestNews">
+        <article css={styles} className="newsDigest">
             <RoundedContainer className="mainContainer">
                 <div className="header">
-                    <h2>Latest News</h2>
+                    <h2>News Digest</h2>
                 </div>
                 <section className="postsContainer">
                     <Query contentType="post">
@@ -98,7 +120,7 @@ function LatestNews(props) {
                             // Process and pass in the loaded `data` necessary for your page or child components.
                             return data.items
                                 .filter((post, i) => {
-                                    if (i < 5) {
+                                    if (i < 4) {
                                         return true;
                                     }
 
@@ -106,34 +128,33 @@ function LatestNews(props) {
                                 })
                                 .map((post, i) => {
                                     return (
-                                        <div key={i}>
-                                            <SinglePost
-                                                title={
+                                        <article key={i} className="newsPost">
+                                            <div
+                                                className="postId"
+                                                style={{
+                                                    backgroundColor:
+                                                        post.fields.category
+                                                            .fields.color,
+                                                }}
+                                            >
+                                                {i + 1}
+                                            </div>
+                                            <h3>
+                                                {
                                                     post.fields.category.fields
                                                         .title
                                                 }
-                                                image={
-                                                    post.fields.image.fields
-                                                        .file.url
-                                                }
-                                                color={
-                                                    post.fields.category.fields
-                                                        .color
-                                                }
-                                                text={post.fields.text}
-                                            />
-                                        </div>
+                                            </h3>
+                                            <p>{post.fields.text}</p>
+                                        </article>
                                     );
                                 });
                         }}
                     </Query>
                 </section>
-                <div className="footer">
-                    <p>READ MORE</p>
-                </div>
             </RoundedContainer>
         </article>
     );
 }
 
-export default LatestNews;
+export default NewsDigest;
