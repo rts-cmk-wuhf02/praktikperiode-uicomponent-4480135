@@ -80,7 +80,7 @@ const styles = css`
         height: 23px;
         background-color: black;
         border-radius: 50px;
-        background-image: url("/nyt.png");
+        background-image: url("${process.env.PUBLIC_URL}/nyt.png");
         background-size: 9px;
         background-repeat: no-repeat;
         background-position: center;
@@ -129,7 +129,7 @@ const styles = css`
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
-        background-image: url("/heart.png");
+        background-image: url("${process.env.PUBLIC_URL}/heart.png");
     }
 
     .topContainer {
