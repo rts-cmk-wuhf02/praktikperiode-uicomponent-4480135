@@ -1,11 +1,19 @@
 /** @jsx jsx */
 import RoundedContainer from "./RoundedContainer";
-import SinglePost from "./SinglePost";
+import StylizedTitle from "./StylizedTitle";
 import { css, jsx } from "@emotion/core";
 
 const styles = css`
-    width: 771px;
-    height: 175px;
+    display: flex;
+    width: 50%;
+
+    &:first-of-type {
+        margin-right: 13px;
+    }
+
+    &:last-of-type {
+        margin-left: 13px;
+    }
 
     .roundedContainer {
         background-color: white;
@@ -35,12 +43,6 @@ const styles = css`
         object-fit: cover;
     }
 
-    .mainContainer {
-        box-sizing: border-box;
-        padding: 19px 29px;
-        display: flex;
-    }
-
     h3 {
         font-size: 28px;
         line-height: 37px;
@@ -58,27 +60,35 @@ const styles = css`
         color: #7b8591;
         letter-spacing: -0.5px;
     }
+
+    .itemContainer {
+        display: flex;
+        width: 50%;
+
+        &:first-of-type {
+            margin-right: 13px;
+        }
+
+        &:last-of-type {
+            margin-left: 13px;
+        }
+    }
 `;
 
-function ShortDoubleCard(props) {
+function SinglePost(props) {
     return (
-        <article css={styles} className="shortDoubleCard">
-            <RoundedContainer className="mainContainer">
-                <SinglePost
-                    title={props.leftTitle}
-                    image={props.leftImage}
-                    color={props.leftColor}
-                    text={props.leftText}
-                />
-                <SinglePost
-                    title={props.rightTitle}
-                    image={props.rightImage}
-                    color={props.rightColor}
-                    text={props.rightText}
-                />
+        <article css={styles}>
+            <RoundedContainer className="imageContainer">
+                <figure>
+                    <img src={props.image} alt="" />
+                </figure>
             </RoundedContainer>
+            <section className="details">
+                <StylizedTitle color={props.color}>{props.title}</StylizedTitle>
+                <p>{props.text}</p>
+            </section>
         </article>
     );
 }
 
-export default ShortDoubleCard;
+export default SinglePost;
