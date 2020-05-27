@@ -7,6 +7,7 @@ import SimpleCard from "./components/SimpleCard";
 import CollectionCard from "./components/CollectionCard";
 import Slideshow from "./components/Slideshow";
 import ShortDoubleCard from "./components/ShortDoubleCard";
+import ShortCard from "./components/ShortCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
@@ -55,13 +56,33 @@ const styles = css`
 
     .lineD {
         display: flex;
-        margin-bottom: 23px;
+        margin-bottom: 29px;
 
         & > :first-of-type {
             margin-right: 27px;
         }
 
         .slideshow {
+            margin-bottom: 29px;
+        }
+
+        .shortDoubleCard {
+            margin-bottom: 23px;
+        }
+    }
+
+    .lineE {
+        display: flex;
+
+        & > :first-of-type {
+            margin-right: 27px;
+        }
+    }
+
+    .lineF {
+        display: flex;
+
+        .shortCard {
             margin-bottom: 29px;
         }
     }
@@ -174,7 +195,47 @@ function App() {
                             rightImage="https://via.placeholder.com/300"
                             rightColor="#597AEF"
                         />
+
+                        <div className="lineE">
+                            <ShortCard
+                                image="https://via.placeholder.com/300"
+                                title="Architecture"
+                                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
+                                color="#FFD430"
+                            />
+
+                            <ShortCard
+                                image="https://via.placeholder.com/400"
+                                title="Travel &amp; Leisure"
+                                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
+                                color="#D0E2FF"
+                            />
+                        </div>
                     </div>
+
+                    <div></div>
+                </div>
+
+                <div className="lineF">
+                    <div>
+                        <ShortCard
+                            image="https://via.placeholder.com/300"
+                            title="Greenery"
+                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
+                            color="#FFFFFF"
+                        />
+
+                        <ShortCard
+                            image="https://via.placeholder.com/400"
+                            title="Beaches"
+                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
+                            color="#FFFFFF"
+                        />
+                    </div>
+
+                    <div></div>
+
+                    <div></div>
                 </div>
             </div>
         </ContentfulProvider>
