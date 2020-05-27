@@ -12,10 +12,8 @@ const styles = css`
         height: 100%;
     }
 
-    .imageContainer {
+    .singlePost .imageContainer {
         width: 141px;
-        margin-right: 18px;
-        flex-shrink: 0;
     }
 
     .details {
@@ -39,6 +37,14 @@ const styles = css`
         box-sizing: border-box;
         padding: 19px 29px;
         display: flex;
+
+        & > :first-of-type {
+            margin-right: 13px;
+        }
+
+        & > :last-of-type {
+            margin-left: 13px;
+        }
     }
 
     h3 {

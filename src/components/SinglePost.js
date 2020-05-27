@@ -5,15 +5,6 @@ import { css, jsx } from "@emotion/core";
 
 const styles = css`
     display: flex;
-    width: 50%;
-
-    &:first-of-type {
-        margin-right: 13px;
-    }
-
-    &:last-of-type {
-        margin-left: 13px;
-    }
 
     .roundedContainer {
         background-color: white;
@@ -21,7 +12,6 @@ const styles = css`
     }
 
     .imageContainer {
-        width: 141px;
         margin-right: 18px;
         flex-shrink: 0;
     }
@@ -41,6 +31,7 @@ const styles = css`
         width: 100%;
         height: 100%;
         object-fit: cover;
+        vertical-align: bottom;
     }
 
     h3 {
@@ -60,24 +51,11 @@ const styles = css`
         color: #7b8591;
         letter-spacing: -0.5px;
     }
-
-    .itemContainer {
-        display: flex;
-        width: 50%;
-
-        &:first-of-type {
-            margin-right: 13px;
-        }
-
-        &:last-of-type {
-            margin-left: 13px;
-        }
-    }
 `;
 
 function SinglePost(props) {
     return (
-        <article css={styles}>
+        <article css={styles} className="singlePost">
             <RoundedContainer className="imageContainer">
                 <figure>
                     <img src={props.image} alt="" />

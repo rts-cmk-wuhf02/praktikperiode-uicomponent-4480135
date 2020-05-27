@@ -51,7 +51,7 @@ const styles = css`
 
 function GeneralCard(props) {
     return (
-        <article css={styles}>
+        <article css={styles} className="generalCard">
             <RoundedContainer>
                 <figure>
                     <img src={props.image} alt="" />
