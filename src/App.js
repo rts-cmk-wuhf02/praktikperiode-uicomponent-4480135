@@ -8,6 +8,7 @@ import CollectionCard from "./components/CollectionCard";
 import Slideshow from "./components/Slideshow";
 import ShortDoubleCard from "./components/ShortDoubleCard";
 import ShortCard from "./components/ShortCard";
+import LatestNews from "./components/LatestNews";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
@@ -213,7 +214,9 @@ function App() {
                         </div>
                     </div>
 
-                    <div></div>
+                    <div>
+                        <LatestNews />
+                    </div>
                 </div>
 
                 <div className="lineF">
