@@ -12,6 +12,7 @@ import LatestNews from "./components/LatestNews";
 import InfoCard from "./components/InfoCard";
 import NewsDigest from "./components/NewsDigest";
 import SplashCard from "./components/SplashCard";
+import FeaturedCard from "./components/FeaturedCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
@@ -87,6 +88,10 @@ const styles = css`
         display: flex;
 
         .shortCard {
+            margin-bottom: 25px;
+        }
+
+        .featuredCard {
             margin-bottom: 29px;
         }
 
@@ -260,6 +265,13 @@ function App() {
                             title="Beaches"
                             text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
                             color="#FFFFFF"
+                        />
+
+                        <FeaturedCard
+                            title="Virtual Reality"
+                            category="Technology"
+                            categoryColor="#D9A34A"
+                            image="https://via.placeholder.com/700"
                         />
 
                         <div className="lineG">
