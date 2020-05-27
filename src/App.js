@@ -6,6 +6,7 @@ import SidewaysCard from "./components/SidewaysCard";
 import SimpleCard from "./components/SimpleCard";
 import CollectionCard from "./components/CollectionCard";
 import Slideshow from "./components/Slideshow";
+import ShortDoubleCard from "./components/ShortDoubleCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
@@ -58,6 +59,10 @@ const styles = css`
 
         & > :first-of-type {
             margin-right: 27px;
+        }
+
+        .slideshow {
+            margin-bottom: 29px;
         }
     }
 `;
@@ -157,6 +162,17 @@ function App() {
                                 "https://via.placeholder.com/800x600",
                                 "https://via.placeholder.com/600x800",
                             ]}
+                        />
+
+                        <ShortDoubleCard
+                            leftTitle="Food &amp; Lifestyle"
+                            leftText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam"
+                            leftImage="https://via.placeholder.com/200"
+                            leftColor="#E44385"
+                            rightTitle="Fashion"
+                            rightText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam"
+                            rightImage="https://via.placeholder.com/300"
+                            rightColor="#597AEF"
                         />
                     </div>
                 </div>
