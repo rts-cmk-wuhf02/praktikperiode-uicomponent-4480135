@@ -168,7 +168,7 @@ class Slideshow extends React.Component {
     };
 
     render = () => (
-        <article css={styles}>
+        <article css={styles} className="slideshow">
             <RoundedContainer className="mainContainer">
                 <section className="details">
                     <section className="topContainer">
