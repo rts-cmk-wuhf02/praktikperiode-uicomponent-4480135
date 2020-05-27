@@ -11,6 +11,7 @@ import ShortCard from "./components/ShortCard";
 import LatestNews from "./components/LatestNews";
 import InfoCard from "./components/InfoCard";
 import NewsDigest from "./components/NewsDigest";
+import SplashCard from "./components/SplashCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
@@ -98,6 +99,18 @@ const styles = css`
 
             &:last-of-type {
                 margin-right: 0;
+            }
+        }
+    }
+
+    .lineG {
+        display: flex;
+
+        .splashCard {
+            flex-shrink: 0;
+
+            &:first-of-type {
+                margin-right: 34px;
             }
         }
     }
@@ -248,6 +261,19 @@ function App() {
                             text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
                             color="#FFFFFF"
                         />
+
+                        <div className="lineG">
+                            <SplashCard
+                                color="#53BBB3"
+                                title="Design"
+                                image="https://via.placeholder.com/600"
+                            />
+                            <SplashCard
+                                color="#358ED7"
+                                title="Education"
+                                image="https://via.placeholder.com/600"
+                            />
+                        </div>
                     </div>
 
                     <div>
