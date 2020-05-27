@@ -14,7 +14,9 @@ function StylizedTitle(props) {
         <div
             css={styles}
             style={{ color: props.color }}
-            className={props.className}
+            className={
+                "stylizedTitle" + (props.className ? " " + props.className : "")
+            }
         >
             {props.children}
         </div>
