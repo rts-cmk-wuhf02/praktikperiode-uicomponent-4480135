@@ -9,6 +9,7 @@ import Slideshow from "./components/Slideshow";
 import ShortDoubleCard from "./components/ShortDoubleCard";
 import ShortCard from "./components/ShortCard";
 import LatestNews from "./components/LatestNews";
+import InfoCard from "./components/InfoCard";
 
 const styles = css`
     @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
@@ -85,6 +86,18 @@ const styles = css`
 
         .shortCard {
             margin-bottom: 29px;
+        }
+
+        .infoCard:first-of-type {
+            margin-bottom: 29px;
+        }
+
+        & > div {
+            margin-right: 27px;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
         }
     }
 `;
@@ -238,7 +251,13 @@ function App() {
 
                     <div></div>
 
-                    <div></div>
+                    <div>
+                        <InfoCard text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas laoreet ligula, ac elementum risus. Aliquam volutpat ex eget elit venenatis, vel luctus arcu pulvinar. " />
+                        <InfoCard
+                            image="https://via.placeholder.com/700"
+                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas laoreet ligula, ac elementum risus. Aliquam volutpat ex eget elit venenatis, vel luctus arcu pulvinar. "
+                        />
+                    </div>
                 </div>
             </div>
         </ContentfulProvider>
