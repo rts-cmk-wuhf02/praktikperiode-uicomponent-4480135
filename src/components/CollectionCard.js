@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import RoundedContainer from "./RoundedContainer";
-import StylizedTitle from "./StylizedTitle";
 import { css, jsx } from "@emotion/core";
 
 const styles = css`

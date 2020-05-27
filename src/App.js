@@ -5,9 +5,10 @@ import GeneralCard from "./components/GeneralCard";
 import SidewaysCard from "./components/SidewaysCard";
 import SimpleCard from "./components/SimpleCard";
 import CollectionCard from "./components/CollectionCard";
+import Slideshow from "./components/Slideshow";
 
 const styles = css`
-    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+    @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap");
     padding: 43px 55px;
     background-color: #eaeaea;
     min-height: 100vh;
@@ -20,7 +21,7 @@ const styles = css`
         display: flex;
         margin-bottom: 29px;
 
-        & > :first-child {
+        & > :first-of-type {
             margin-right: 27px;
         }
     }
@@ -32,7 +33,7 @@ const styles = css`
         .simpleCard {
             margin-right: 28px;
 
-            &:last-child {
+            &:last-of-type {
                 margin-right: 0;
             }
         }
@@ -45,9 +46,18 @@ const styles = css`
         .collectionCard {
             margin-right: 27px;
 
-            &:last-child {
+            &:last-of-type {
                 margin-right: 0;
             }
+        }
+    }
+
+    .lineD {
+        display: flex;
+        margin-bottom: 23px;
+
+        & > :first-of-type {
+            margin-right: 27px;
         }
     }
 `;
@@ -132,6 +142,23 @@ function App() {
                         author="Benhour."
                         collection="100"
                     />
+                </div>
+
+                <div className="lineD">
+                    <div>
+                        <Slideshow
+                            title="Must see places
+                        for summer"
+                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam"
+                            images={[
+                                "https://via.placeholder.com/700x500",
+                                "https://via.placeholder.com/600x600",
+                                "https://via.placeholder.com/600x500",
+                                "https://via.placeholder.com/800x600",
+                                "https://via.placeholder.com/600x800",
+                            ]}
+                        />
+                    </div>
                 </div>
             </div>
         </ContentfulProvider>
