@@ -41,6 +41,10 @@ const styles = css`
         color: black;
         font-weight: bold;
         font-family: "Montserrat", sans-serif;
+        white-space: nowrap;
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
     }
 
     .stylizedTitle {

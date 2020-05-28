@@ -41,6 +41,10 @@ const styles = css`
         font-weight: bold;
         font-family: "Montserrat", sans-serif;
         margin: 0;
+        width: 100%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
     }
 
     p {

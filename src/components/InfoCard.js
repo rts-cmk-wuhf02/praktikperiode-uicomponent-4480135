@@ -49,6 +49,8 @@ const styles = css`
         font-weight: normal;
         margin-top: 45px;
         letter-spacing: -0.7px;
+        height: 201px;
+        overflow: hidden;
     }
 
     .logo {

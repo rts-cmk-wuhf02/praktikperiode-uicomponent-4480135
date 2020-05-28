@@ -39,6 +39,10 @@ const styles = css`
         font-family: "Montserrat", sans-serif;
         margin: 10px 0;
         text-transform: uppercase;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     p {
@@ -49,6 +53,8 @@ const styles = css`
         margin-top: 15px;
         margin-bottom: 0;
         letter-spacing: -0.6px;
+        height: 62px;
+        overflow: hidden;
     }
 `;
 

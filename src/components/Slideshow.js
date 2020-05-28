@@ -52,7 +52,9 @@ const styles = css`
         line-height: 45px;
         font-weight: bold;
         font-family: "Montserrat", sans-serif;
-        margin: 10px 0;
+        height: 109px;
+        overflow: hidden;
+        margin: 0;
     }
 
     p {
@@ -60,7 +62,10 @@ const styles = css`
         line-height: 25px;
         font-family: "Montserrat", sans-serif;
         font-weight: 300;
-        margin-top: 15px;
+        margin-top: 6px;
+        height: 62px;
+        overflow: hidden;
+        margin-bottom: 0;
     }
 
     .postInfo {

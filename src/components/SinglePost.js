@@ -50,6 +50,8 @@ const styles = css`
         margin-top: 15px;
         color: #7b8591;
         letter-spacing: -0.5px;
+        height: 62px;
+        overflow: hidden;
     }
 `;
 

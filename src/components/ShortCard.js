@@ -65,6 +65,8 @@ const styles = css`
         font-weight: normal;
         margin-top: 28px;
         letter-spacing: -0.5px;
+        height: 62px;
+        overflow: hidden;
     }
 `;
 

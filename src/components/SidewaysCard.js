@@ -17,8 +17,8 @@ const styles = css`
 
     .mainImage {
         box-sizing: border-box;
-        width: calc(50% - 39px);
-        margin-right: 39px;
+        width: 293px;
+        margin-right: 38px;
         height: 100%;
         flex-shrink: 0;
     }
@@ -41,7 +41,8 @@ const styles = css`
         line-height: 51px;
         font-weight: bold;
         font-family: "Montserrat", sans-serif;
-        margin: 10px 0;
+        margin: 0;
+        height: 111px;
     }
 
     p {
@@ -49,14 +50,19 @@ const styles = css`
         line-height: 22px;
         font-family: "Montserrat", sans-serif;
         font-weight: normal;
-        margin-top: 15px;
+        margin: 17px 0 18px 0;
         color: #7b8591;
         letter-spacing: -0.5px;
+        height: 92px;
+        overflow: hidden;
     }
 
     .thumbnailContainer {
         width: 100%;
+        height: 104px;
         display: flex;
+        padding-right: 8px;
+        box-sizing: border-box;
 
         .roundedContainer {
             width: 100%;
@@ -73,9 +79,12 @@ const styles = css`
     }
 
     .stylizedTitleContainer {
-        display: inline-block;
         border-radius: 17px;
-        padding: 10px 20px;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        height: 33px;
         align-self: flex-end;
     }
 
