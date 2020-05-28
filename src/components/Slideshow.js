@@ -161,7 +161,7 @@ class Slideshow extends React.Component {
                     ? this.state.activePanel + 1
                     : 0
             );
-        }, 3000);
+        }, 6000);
     };
 
     handleSlideshowControl = (index) => {

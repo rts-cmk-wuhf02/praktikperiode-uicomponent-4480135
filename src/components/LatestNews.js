@@ -80,51 +80,34 @@ function LatestNews(props) {
                     <h2>Latest News</h2>
                 </div>
                 <section className="postsContainer">
-                    <Query contentType="post">
+                    <Query contentType="post" query={{ limit: 5 }}>
                         {({ data, error, fetched, loading }) => {
-                            if (loading || !fetched) {
+                            if (loading || !fetched || error || !data) {
+                                if (error) console.error(error);
                                 return null;
                             }
 
-                            if (error) {
-                                console.error(error);
-                                return null;
-                            }
-
-                            if (!data) {
-                                return <p>No news found.</p>;
-                            }
-
-                            // Process and pass in the loaded `data` necessary for your page or child components.
-                            return data.items
-                                .filter((post, i) => {
-                                    if (i < 5) {
-                                        return true;
-                                    }
-
-                                    return false;
-                                })
-                                .map((post, i) => {
-                                    return (
-                                        <div key={i}>
-                                            <SinglePost
-                                                title={
-                                                    post.fields.category.fields
-                                                        .title
-                                                }
-                                                image={
-                                                    post.fields.image.fields
-                                                        .file.url
-                                                }
-                                                color={
-                                                    post.fields.category.fields
-                                                        .color
-                                                }
-                                                text={post.fields.text}
-                                            />
-                                        </div>
-                                    );
-                                });
+                            return data.items.map((post, i) => {
+                                return (
+                                    <div key={i}>
+                                        <SinglePost
+                                            title={
+                                                post.fields.category.fields
+                                                    .title
+                                            }
+                                            image={
+                                                post.fields.image.fields.file
+                                                    .url
+                                            }
+                                            color={
+                                                post.fields.category.fields
+                                                    .color
+                                            }
+                                            text={post.fields.text}
+                                        />
+                                    </div>
+                                );
+                            });
                         }}
                     </Query>
                 </section>
