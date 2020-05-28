@@ -96,59 +96,39 @@ const styles = css`
 
 function NewsDigest(props) {
     return (
-        <article css={styles} className="newsDigest">
+        <article css={styles} className="newsDigest" key={props.key}>
             <RoundedContainer className="mainContainer">
                 <div className="header">
                     <h2>News Digest</h2>
                 </div>
                 <section className="postsContainer">
-                    <Query contentType="post">
+                    <Query contentType="post" query={{ limit: 4 }}>
                         {({ data, error, fetched, loading }) => {
-                            if (loading || !fetched) {
-                                return null;
-                            }
-
-                            if (error) {
+                            if (loading || !fetched || error || !data) {
                                 console.error(error);
                                 return null;
                             }
 
-                            if (!data) {
-                                return <p>No news found.</p>;
-                            }
-
-                            // Process and pass in the loaded `data` necessary for your page or child components.
-                            return data.items
-                                .filter((post, i) => {
-                                    if (i < 4) {
-                                        return true;
-                                    }
-
-                                    return false;
-                                })
-                                .map((post, i) => {
-                                    return (
-                                        <article key={i} className="newsPost">
-                                            <div
-                                                className="postId"
-                                                style={{
-                                                    backgroundColor:
-                                                        post.fields.category
-                                                            .fields.color,
-                                                }}
-                                            >
-                                                {i + 1}
-                                            </div>
-                                            <h3>
-                                                {
+                            return data.items.map((post, i) => {
+                                return (
+                                    <article key={i} className="newsPost">
+                                        <div
+                                            className="postId"
+                                            style={{
+                                                backgroundColor:
                                                     post.fields.category.fields
-                                                        .title
-                                                }
-                                            </h3>
-                                            <p>{post.fields.text}</p>
-                                        </article>
-                                    );
-                                });
+                                                        .color,
+                                            }}
+                                        >
+                                            {i + 1}
+                                        </div>
+                                        <h3>
+                                            {post.fields.category.fields.title}
+                                        </h3>
+                                        <p>{post.fields.text}</p>
+                                    </article>
+                                );
+                            });
                         }}
                     </Query>
                 </section>

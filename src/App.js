@@ -1,5 +1,6 @@
 /** @jsx jsx */
 import { ContentfulClient, ContentfulProvider } from "react-contentful";
+import { Query } from "react-contentful";
 import { css, jsx } from "@emotion/core";
 import GeneralCard from "./components/GeneralCard";
 import SidewaysCard from "./components/SidewaysCard";
@@ -131,25 +132,70 @@ function App() {
         <ContentfulProvider client={contentfulClient}>
             <div css={styles}>
                 <div className="lineA">
-                    <GeneralCard
-                        title="Surfing in Maldives"
-                        text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
-                        categoryColor="#33439B"
-                        category="Travel"
-                        image="https://via.placeholder.com/600"
-                    />
-                    <SidewaysCard
-                        title="Outdoor Experience"
-                        text="It’s windy. The cool breeze of the ocean. It gives, a sense of beauty, in motion. All is flowing, rushing and tide-And I sit in wonder, dreaming beside."
-                        categoryColor="#005AEE"
-                        category="Leisure"
-                        image="https://via.placeholder.com/600"
-                        thumbnails={[
-                            "https://via.placeholder.com/700",
-                            "https://via.placeholder.com/800",
-                            "https://via.placeholder.com/900",
-                        ]}
-                    />
+                    <Query contentType="article" query={{ limit: 1 }}>
+                        {({ data, error, fetched, loading }) => {
+                            if (loading || !fetched || error || !data) {
+                                console.error(error);
+                                return null;
+                            }
+
+                            return data.items.map((post, i) => {
+                                return (
+                                    <GeneralCard
+                                        title={post.fields.title}
+                                        text={post.fields.text}
+                                        categoryColor={
+                                            post.fields.category.fields.color
+                                        }
+                                        category={
+                                            post.fields.category.fields.title
+                                        }
+                                        image={
+                                            post.fields.image.fields.file.url
+                                        }
+                                        key={i}
+                                    />
+                                );
+                            });
+                        }}
+                    </Query>
+
+                    <Query contentType="detailedArticle" query={{ limit: 1 }}>
+                        {({ data, error, fetched, loading }) => {
+                            if (loading || !fetched || error || !data) {
+                                console.error(error);
+                                return null;
+                            }
+
+                            return data.items.map((post, i) => {
+                                return (
+                                    <SidewaysCard
+                                        title={post.fields.title}
+                                        text={post.fields.text}
+                                        categoryColor={
+                                            post.fields.category.fields.color
+                                        }
+                                        category={
+                                            post.fields.category.fields.title
+                                        }
+                                        image={
+                                            post.fields.images[0].fields.file
+                                                .url
+                                        }
+                                        thumbnails={[
+                                            post.fields.images[1].fields.file
+                                                .url,
+                                            post.fields.images[2].fields.file
+                                                .url,
+                                            post.fields.images[3].fields.file
+                                                .url,
+                                        ]}
+                                        key={i}
+                                    />
+                                );
+                            });
+                        }}
+                    </Query>
                 </div>
 
                 <div className="lineB">
@@ -180,54 +226,100 @@ function App() {
                 </div>
 
                 <div className="lineC">
-                    <CollectionCard
-                        image="https://via.placeholder.com/300"
-                        title="Off-the-grid experiences"
-                        authorIcon="https://via.placeholder.com/150"
-                        author="Melanie S."
-                        collection="10"
-                    />
-                    <CollectionCard
-                        image="https://via.placeholder.com/300"
-                        title="Shapes, triangles &amp; fashion"
-                        authorIcon="https://via.placeholder.com/150"
-                        author="Saraha F."
-                        collection="1"
-                    />
-                    <CollectionCard
-                        image="https://via.placeholder.com/300"
-                        title="In-depth architecture"
-                        authorIcon="https://via.placeholder.com/150"
-                        author="Benhour."
-                        collection="100"
-                    />
+                    <Query contentType="collection" query={{ limit: 3 }}>
+                        {({ data, error, fetched, loading }) => {
+                            if (loading || !fetched || error || !data) {
+                                console.error(error);
+                                return null;
+                            }
+
+                            return data.items.map((post, i) => {
+                                return (
+                                    <CollectionCard
+                                        image={
+                                            post.fields.image.fields.file.url
+                                        }
+                                        title={post.fields.title}
+                                        authorIcon={
+                                            post.fields.author.fields.icon
+                                                .fields.file.url
+                                        }
+                                        author={post.fields.author.fields.name}
+                                        collection={post.fields.id}
+                                        key={i}
+                                    />
+                                );
+                            });
+                        }}
+                    </Query>
                 </div>
 
                 <div className="lineD">
                     <div>
-                        <Slideshow
-                            title="Must see places
-                        for summer"
-                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam"
-                            images={[
-                                "https://via.placeholder.com/700x500",
-                                "https://via.placeholder.com/600x600",
-                                "https://via.placeholder.com/600x500",
-                                "https://via.placeholder.com/800x600",
-                                "https://via.placeholder.com/600x800",
-                            ]}
-                        />
+                        <Query contentType="slideshow" query={{ limit: 1 }}>
+                            {({ data, error, fetched, loading }) => {
+                                if (loading || !fetched || error || !data) {
+                                    console.error(error);
+                                    return null;
+                                }
 
-                        <ShortDoubleCard
-                            leftTitle="Food &amp; Lifestyle"
-                            leftText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam"
-                            leftImage="https://via.placeholder.com/200"
-                            leftColor="#E44385"
-                            rightTitle="Fashion"
-                            rightText="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam"
-                            rightImage="https://via.placeholder.com/300"
-                            rightColor="#597AEF"
-                        />
+                                return data.items.map((post, i) => {
+                                    return (
+                                        <Slideshow
+                                            title={post.fields.title}
+                                            text={post.fields.text}
+                                            images={post.fields.images.map(
+                                                (image) => {
+                                                    return image.fields.file
+                                                        .url;
+                                                }
+                                            )}
+                                            key={i}
+                                        />
+                                    );
+                                });
+                            }}
+                        </Query>
+
+                        <Query contentType="post" query={{ limit: 2 }}>
+                            {({ data, error, fetched, loading }) => {
+                                if (loading || !fetched || error || !data) {
+                                    console.error(error);
+                                    return null;
+                                }
+
+                                return (
+                                    <ShortDoubleCard
+                                        leftTitle={
+                                            data.items[0].fields.category.fields
+                                                .title
+                                        }
+                                        leftText={data.items[0].fields.text}
+                                        leftImage={
+                                            data.items[0].fields.image.fields
+                                                .file.url
+                                        }
+                                        leftColor={
+                                            data.items[0].fields.category.fields
+                                                .color
+                                        }
+                                        rightTitle={
+                                            data.items[1].fields.category.fields
+                                                .title
+                                        }
+                                        rightText={data.items[1].fields.text}
+                                        rightImage={
+                                            data.items[0].fields.image.fields
+                                                .file.url
+                                        }
+                                        rightColor={
+                                            data.items[1].fields.category.fields
+                                                .color
+                                        }
+                                    />
+                                );
+                            }}
+                        </Query>
 
                         <div className="lineE">
                             <ShortCard
@@ -267,12 +359,35 @@ function App() {
                             color="#FFFFFF"
                         />
 
-                        <FeaturedCard
-                            title="Virtual Reality"
-                            category="Technology"
-                            categoryColor="#D9A34A"
-                            image="https://via.placeholder.com/700"
-                        />
+                        <Query contentType="feature" query={{ limit: 1 }}>
+                            {({ data, error, fetched, loading }) => {
+                                if (loading || !fetched || error || !data) {
+                                    console.error(error);
+                                    return null;
+                                }
+
+                                return data.items.map((post, i) => {
+                                    return (
+                                        <FeaturedCard
+                                            title={post.fields.title}
+                                            category={
+                                                post.fields.category.fields
+                                                    .title
+                                            }
+                                            categoryColor={
+                                                post.fields.category.fields
+                                                    .color
+                                            }
+                                            image={
+                                                post.fields.image.fields.file
+                                                    .url
+                                            }
+                                            key={i}
+                                        />
+                                    );
+                                });
+                            }}
+                        </Query>
 
                         <div className="lineG">
                             <SplashCard
