@@ -83,7 +83,7 @@ function LatestNews(props) {
                     <Query contentType="post" query={{ limit: 5 }}>
                         {({ data, error, fetched, loading }) => {
                             if (loading || !fetched || error || !data) {
-                                console.error(error);
+                                if (error) console.error(error);
                                 return null;
                             }
 

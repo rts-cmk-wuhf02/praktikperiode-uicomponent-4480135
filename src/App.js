@@ -135,7 +135,7 @@ function App() {
                     <Query contentType="article" query={{ limit: 1 }}>
                         {({ data, error, fetched, loading }) => {
                             if (loading || !fetched || error || !data) {
-                                console.error(error);
+                                if (error) console.error(error);
                                 return null;
                             }
 
@@ -163,7 +163,7 @@ function App() {
                     <Query contentType="detailedArticle" query={{ limit: 1 }}>
                         {({ data, error, fetched, loading }) => {
                             if (loading || !fetched || error || !data) {
-                                console.error(error);
+                                if (error) console.error(error);
                                 return null;
                             }
 
@@ -229,7 +229,7 @@ function App() {
                     <Query contentType="collection" query={{ limit: 3 }}>
                         {({ data, error, fetched, loading }) => {
                             if (loading || !fetched || error || !data) {
-                                console.error(error);
+                                if (error) console.error(error);
                                 return null;
                             }
 
@@ -259,7 +259,7 @@ function App() {
                         <Query contentType="slideshow" query={{ limit: 1 }}>
                             {({ data, error, fetched, loading }) => {
                                 if (loading || !fetched || error || !data) {
-                                    console.error(error);
+                                    if (error) console.error(error);
                                     return null;
                                 }
 
@@ -284,7 +284,7 @@ function App() {
                         <Query contentType="post" query={{ limit: 2 }}>
                             {({ data, error, fetched, loading }) => {
                                 if (loading || !fetched || error || !data) {
-                                    console.error(error);
+                                    if (error) console.error(error);
                                     return null;
                                 }
 
@@ -325,7 +325,7 @@ function App() {
                             <Query contentType="post" query={{ limit: 2 }}>
                                 {({ data, error, fetched, loading }) => {
                                     if (loading || !fetched || error || !data) {
-                                        console.error(error);
+                                        if (error) console.error(error);
                                         return null;
                                     }
 
@@ -364,7 +364,7 @@ function App() {
                         <Query contentType="post" query={{ limit: 4 }}>
                             {({ data, error, fetched, loading }) => {
                                 if (loading || !fetched || error || !data) {
-                                    console.error(error);
+                                    if (error) console.error(error);
                                     return null;
                                 }
 
@@ -396,7 +396,7 @@ function App() {
                         <Query contentType="feature" query={{ limit: 1 }}>
                             {({ data, error, fetched, loading }) => {
                                 if (loading || !fetched || error || !data) {
-                                    console.error(error);
+                                    if (error) console.error(error);
                                     return null;
                                 }
 
