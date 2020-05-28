@@ -322,19 +322,35 @@ function App() {
                         </Query>
 
                         <div className="lineE">
-                            <ShortCard
-                                image="https://via.placeholder.com/300"
-                                title="Architecture"
-                                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
-                                color="#FFD430"
-                            />
+                            <Query contentType="post" query={{ limit: 2 }}>
+                                {({ data, error, fetched, loading }) => {
+                                    if (loading || !fetched || error || !data) {
+                                        console.error(error);
+                                        return null;
+                                    }
 
-                            <ShortCard
-                                image="https://via.placeholder.com/400"
-                                title="Travel &amp; Leisure"
-                                text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
-                                color="#D0E2FF"
-                            />
+                                    return data.items.map((post, i) => {
+                                        return (
+                                            <ShortCard
+                                                image={
+                                                    post.fields.image.fields
+                                                        .file.url
+                                                }
+                                                title={
+                                                    post.fields.category.fields
+                                                        .title
+                                                }
+                                                text={post.fields.text}
+                                                color={
+                                                    post.fields.category.fields
+                                                        .color
+                                                }
+                                                key={i}
+                                            />
+                                        );
+                                    });
+                                }}
+                            </Query>
                         </div>
                     </div>
 
@@ -345,19 +361,37 @@ function App() {
 
                 <div className="lineF">
                     <div>
-                        <ShortCard
-                            image="https://via.placeholder.com/300"
-                            title="Greenery"
-                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
-                            color="#FFFFFF"
-                        />
+                        <Query contentType="post" query={{ limit: 4 }}>
+                            {({ data, error, fetched, loading }) => {
+                                if (loading || !fetched || error || !data) {
+                                    console.error(error);
+                                    return null;
+                                }
 
-                        <ShortCard
-                            image="https://via.placeholder.com/400"
-                            title="Beaches"
-                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas "
-                            color="#FFFFFF"
-                        />
+                                return data.items
+                                    .filter((post, i) => i > 1)
+                                    .map((post, i) => {
+                                        return (
+                                            <ShortCard
+                                                image={
+                                                    post.fields.image.fields
+                                                        .file.url
+                                                }
+                                                title={
+                                                    post.fields.category.fields
+                                                        .title
+                                                }
+                                                text={post.fields.text}
+                                                color={
+                                                    post.fields.category.fields
+                                                        .color
+                                                }
+                                                key={i}
+                                            />
+                                        );
+                                    });
+                            }}
+                        </Query>
 
                         <Query contentType="feature" query={{ limit: 1 }}>
                             {({ data, error, fetched, loading }) => {
