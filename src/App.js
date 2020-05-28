@@ -199,30 +199,28 @@ function App() {
                 </div>
 
                 <div className="lineB">
-                    <SimpleCard
-                        title="On-time Delivery"
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
-                        image="https://via.placeholder.com/150"
-                        color="#005AEE"
-                    />
-                    <SimpleCard
-                        title="Parcels"
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
-                        image="https://via.placeholder.com/70"
-                        color="#FFA767"
-                    />
-                    <SimpleCard
-                        title="Quality Assurance"
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
-                        image="https://via.placeholder.com/120"
-                        color="#0AACDC"
-                    />
-                    <SimpleCard
-                        title="Customer Service"
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit"
-                        image="https://via.placeholder.com/100x70"
-                        color="#597AEF"
-                    />
+                    <Query contentType="presentation" query={{ limit: 4 }}>
+                        {({ data, error, fetched, loading }) => {
+                            if (loading || !fetched || error || !data) {
+                                if (error) console.error(error);
+                                return null;
+                            }
+
+                            return data.items.map((post, i) => {
+                                return (
+                                    <SimpleCard
+                                        title={post.fields.title}
+                                        text={post.fields.text}
+                                        image={
+                                            post.fields.image.fields.file.url
+                                        }
+                                        color={post.fields.color}
+                                        key={i}
+                                    />
+                                );
+                            });
+                        }}
+                    </Query>
                 </div>
 
                 <div className="lineC">
@@ -424,16 +422,28 @@ function App() {
                         </Query>
 
                         <div className="lineG">
-                            <SplashCard
-                                color="#53BBB3"
-                                title="Design"
-                                image="https://via.placeholder.com/600"
-                            />
-                            <SplashCard
-                                color="#358ED7"
-                                title="Education"
-                                image="https://via.placeholder.com/600"
-                            />
+                            <Query contentType="category" query={{ limit: 2 }}>
+                                {({ data, error, fetched, loading }) => {
+                                    if (loading || !fetched || error || !data) {
+                                        if (error) console.error(error);
+                                        return null;
+                                    }
+
+                                    return data.items.map((post, i) => {
+                                        return (
+                                            <SplashCard
+                                                color={post.fields.color}
+                                                title={post.fields.title}
+                                                image={
+                                                    post.fields.image.fields
+                                                        .file.url
+                                                }
+                                                key={i}
+                                            />
+                                        );
+                                    });
+                                }}
+                            </Query>
                         </div>
                     </div>
 
@@ -442,11 +452,29 @@ function App() {
                     </div>
 
                     <div>
-                        <InfoCard text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas laoreet ligula, ac elementum risus. Aliquam volutpat ex eget elit venenatis, vel luctus arcu pulvinar. " />
-                        <InfoCard
-                            image="https://via.placeholder.com/700"
-                            text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquam diam sit amet elit hendrerit rutrum. Nam egestas laoreet ligula, ac elementum risus. Aliquam volutpat ex eget elit venenatis, vel luctus arcu pulvinar. "
-                        />
+                        <Query contentType="info" query={{ limit: 2 }}>
+                            {({ data, error, fetched, loading }) => {
+                                if (loading || !fetched || error || !data) {
+                                    if (error) console.error(error);
+                                    return null;
+                                }
+
+                                return data.items.map((post, i) => {
+                                    return (
+                                        <InfoCard
+                                            image={
+                                                post.fields.image
+                                                    ? post.fields.image.fields
+                                                          .file.url
+                                                    : undefined
+                                            }
+                                            text={post.fields.text}
+                                            key={i}
+                                        />
+                                    );
+                                });
+                            }}
+                        </Query>
                     </div>
                 </div>
             </div>
